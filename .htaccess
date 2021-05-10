@@ -1,0 +1,99 @@
+AddDefaultCharset UTF-8
+ErrorDocument 401 /password.php
+
+Options +FollowSymLinks -Indexes
+RewriteEngine On
+
+RewriteCond %{HTTP:Authorization} .
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
+
+#Редирект на HTTPS:
+#RewriteCond %{HTTPS} =off
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+#Редирект С www на БЕЗ www:
+#RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+#RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+#301 Редирект страниц:
+#RewriteRule ^category/old-page.html$ category/new-page [R=301,NC,L]
+#
+#RewriteRule ^ajax/([^/]+)/([^/]+)/?$	index.php?module=AjaxController&path=$1&route_name=$2 [L,QSA]
+#
+## Избранное
+#RewriteRule ^favorites/?$	index.php?module=FavoritesController&type=action [L,QSA]
+## Сравнение
+#RewriteRule ^compares/?$	index.php?module=ComparesController [L,QSA]
+#
+## акции
+#RewriteRule ^actions/?$	index.php?module=ProductsController&type=actions [L,QSA]
+## рекомендуемые
+#RewriteRule ^featured/?$	index.php?module=ProductsController&type=featured [L,QSA]
+## новинки
+#RewriteRule ^new/?$	index.php?module=ProductsController&type=new [L,QSA]
+#
+## Каталог товаров
+#RewriteRule ^catalog/?$	index.php?module=ProductsController&category=katalog [L,QSA]
+#RewriteRule ^catalog/([^/]+)/?$	index.php?module=ProductsController&category=$1 [L,QSA]
+#RewriteRule ^catalog/([^/]+)/([^/]+)/?$	index.php?module=ProductsController&category=$1&brand=$2 [L,QSA]
+#
+#RewriteRule ^products/([^/]+)/?$	index.php?module=ProductController&product_url=$1 [L,QSA]
+#RewriteRule ^products/?$	index.php?module=ProductsController [L,QSA]
+#
+#RewriteRule ^brands/([^/]+)/?$	index.php?module=ProductsController&brand=$1 [L,QSA]
+#RewriteRule ^brands/([^/]+)/page_([^/]+)/?$	index.php?module=ProductsController&brand=$1&page=$2 [L,QSA]
+#
+## Поиск товаров
+##RewriteRule ^search/([^/]+)/?$	index.php?module=ProductsController&keyword=$1 [L,QSA]
+#RewriteRule ^search/?$	index.php?module=SearchController [L,QSA]
+#
+## Блог
+#RewriteRule ^blog/([^/]+)/?$	index.php?module=BlogController&url=$1 [L,QSA]
+#RewriteRule ^blog/?$	index.php?module=BlogController [L,QSA]
+#
+## Корзина и заказы
+#RewriteRule ^cart/?$	index.php?module=CartController   [L,QSA]
+#RewriteRule ^cart/([^/]+)/?$	index.php?module=CartController&add_variant=$1  [L,QSA]
+#RewriteRule ^cart/remove/([^/]+)/?$	index.php?module=CartController&delete_variant=$1  [L,QSA]
+#RewriteRule ^cart/remove/all/?$	index.php?module=CartController&remove_cart=1  [L,QSA]
+#RewriteRule ^order/([^/]+)/?$	index.php?module=OrderController&url=$1  [L,QSA]
+#RewriteRule ^order/?$	index.php?module=OrderController  [L,QSA]
+#
+## Для пользователей
+#RewriteRule ^user/login/?$	index.php?module=LoginController  [L,QSA]
+#RewriteRule ^user/register/?$	index.php?module=RegisterController  [L,QSA]
+#RewriteRule ^user/logout/?$	index.php?module=LoginController&action=logout  [L,QSA]
+#RewriteRule ^user/password_remind/?$	index.php?module=LoginController&action=password_remind  [L,QSA]
+#RewriteRule ^user/password_remind/([0-9a-z]+)/?$	index.php?module=LoginController&action=password_remind&code=$1  [L,QSA]
+#RewriteRule ^user/?$	index.php?module=UserController  [L,QSA]
+#
+## Google sitemap
+#RewriteRule ^sitemap.xml?$	sitemap.php  [L,QSA]
+#
+## XML
+#RewriteRule ^yandex.xml?$	yandex.php  [L,QSA]
+#
+## feedback
+#RewriteRule ^contact/?$	index.php?module=FeedbackController  [L,QSA]
+#
+##downloads
+#RewriteRule ^order/([^/]+)/([^/]+)/?$	index.php?module=OrderController&url=$1&file=$2  [L,QSA]
+#
+## Статические страницы
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^([^/]*)/?$	index.php?module=PageController&page_url=$1 [L,QSA]
+#RewriteRule ^/?$	index.php?module=MainController&page_url= [L,QSA]
+
+# Ресайз картинок на лету
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^files/products/(.+) resize/resize.php?file=$1&token=%{QUERY_STRING}
+#RewriteCond %{THE_REQUEST} ^GET\ (.*)files/products/(.*)\?([A-z0-9]*)
+#RewriteRule ^files/products/(.+) resize/resize.php?file=%2&token=%3 [L,NE]
+
+
