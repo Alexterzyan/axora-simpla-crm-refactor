@@ -12,7 +12,7 @@ class RegisterUserRequest implements IRequestRules
         return [
             'name' => 'required',
             'email' => 'email|required',
-            'password' => 'password|required'
+            'password' => 'required|min:6'
         ];
     }
 

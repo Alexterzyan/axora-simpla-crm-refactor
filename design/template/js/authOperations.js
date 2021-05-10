@@ -118,10 +118,10 @@ $(document).ready(function () {
                                     data: formDataToObj($(form)),
                                     dataType: 'json',
                                     success: function (data) {
-                                        window.location.href = data.response.redirect_url;
+                                        window.location.href = data.redirectUrl;
                                     },
                                     error: function (request, status, error) {
-                                        $('#register-error').html(request.responseJSON.response.error);
+                                        $('#register-error').html(request.responseJSON.errors);
                                     }
                                 });
                             }

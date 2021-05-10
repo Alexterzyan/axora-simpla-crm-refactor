@@ -6,7 +6,6 @@
 
 {* Канонический адрес страницы *}
 {$canonical="" scope=root}
-
 <div class="container">
     {*{api module=banners method=gets var=banners_slider _=['visible' => 1, 'type'=>1]}*}
     {if $banners_slider}

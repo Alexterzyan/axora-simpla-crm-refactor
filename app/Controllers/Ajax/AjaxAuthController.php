@@ -2,13 +2,9 @@
 
 namespace App\Controllers\Ajax;
 
-use App\Api\Users;
 use App\Controllers\Controller;
-use App\Eloquent\Models\User;
 use App\Helpers\AuthHelper;
 use App\Repositories\IUserDBRepository;
-use App\RequestRules\User\RegisterUserRequest;
-use Rakit\Validation\Validator;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -16,13 +12,6 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class AjaxAuthController extends Controller
 {
     protected $middleware = ['ajax'];
-    private $container;
-    private $users;
-
-    public function __construct()
-    {
-        $this->users = new Users();
-    }
 
     public function login(Request $request, JsonResponse $response, IUserDBRepository $userDBRepository, Session $session)
     {
@@ -47,23 +36,24 @@ class AjaxAuthController extends Controller
 
     public function register(Request $request, JsonResponse $response, IUserDBRepository $userDBRepository, Session $session)
     {
-        $validation = makeValidation(
-            $this->container->get(Validator::class),
-            $request,
-            RegisterUserRequest::rules()
-        );
+        $data = $request->request->all();
+        $data['last_ip'] = $_SERVER['REMOTE_ADDR'];
+        $data['enabled'] = 1;
 
-        if ($validation->errors()) {
-            $errors = $session->set('errors', $validation->errors()->toArray());
-            $session->set('old', $request->request->all());
-            back();
+        if ($userDBRepository->findByEmail($data['email'])) {
             return $this->jsonResponse($response, [
                 'code' => 422,
-                'errors' => $errors,
+                'errors' => 'Такой Email уже существует'
             ], 422);
         }
 
-        $userDBRepository->create()
+        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+        $user_id = $userDBRepository->create($data);
+
+        $session->set('user_id', $user_id);
+
+        return $this->jsonResponse($response, ['redirectUrl' => $request->headers->get('referer')]);
 
     }
 }

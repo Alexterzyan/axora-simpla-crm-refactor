@@ -10,7 +10,8 @@ class EloquentUserQueries implements IUserDBRepository
 
     public function create(array $data): int
     {
-        // TODO: Implement create() method.
+        $user = User::create($data);
+        return $user ? $user->id : '';
     }
 
     public function update(int $id, array $data): bool
@@ -37,7 +38,7 @@ class EloquentUserQueries implements IUserDBRepository
 
     public function findByEmail(string $email): array
     {
-        $user = User::whereEmail($email)->where('enabled', 1)->first();
+        $user = User::where('email', $email)->where('enabled', 1)->first();
 
         return $user ? $user->toArray() : [];
     }

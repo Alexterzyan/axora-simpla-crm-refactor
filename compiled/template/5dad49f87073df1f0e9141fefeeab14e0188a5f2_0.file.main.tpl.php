@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-05-09 19:59:47
+/* Smarty version 3.1.39, created on 2021-05-10 17:36:16
   from 'D:\OpenServer\domains\simpla-refactor\design\template\html\main.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_60981503538632_37838055',
+  'unifunc' => 'content_609944e02479d2_66342162',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5dad49f87073df1f0e9141fefeeab14e0188a5f2' => 
     array (
       0 => 'D:\\OpenServer\\domains\\simpla-refactor\\design\\template\\html\\main.tpl',
-      1 => 1609774488,
+      1 => 1620657375,
       2 => 'file',
     ),
   ),
@@ -24,11 +24,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:partials/blog_posts.tpl' => 1,
   ),
 ),false)) {
-function content_60981503538632_37838055 (Smarty_Internal_Template $_smarty_tpl) {
+function content_609944e02479d2_66342162 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_assignInScope('wrapper', 'index.tpl' ,false ,8);?>
 
 <?php $_smarty_tpl->_assignInScope('canonical', '' ,false ,8);?>
-
 <div class="container">
         <?php if ($_smarty_tpl->tpl_vars['banners_slider']->value) {?>
     <div class="main-slider-wrapper">
