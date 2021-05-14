@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-05-12 19:26:10
+/* Smarty version 3.1.39, created on 2021-05-13 18:44:48
   from '/var/www/example.com/design/template/html/main.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_609c2bd21f53a1_42527189',
+  'unifunc' => 'content_609d73a0cd5e24_77724171',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5f1fe6ad0a90c061ab4df81adffad508e9c6ef98' => 
     array (
       0 => '/var/www/example.com/design/template/html/main.tpl',
-      1 => 1620665377,
+      1 => 1620931245,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:partials/blog_posts.tpl' => 1,
   ),
 ),false)) {
-function content_609c2bd21f53a1_42527189 (Smarty_Internal_Template $_smarty_tpl) {
+function content_609d73a0cd5e24_77724171 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_assignInScope('wrapper', 'index.tpl' ,false ,8);?>
 
 <?php $_smarty_tpl->_assignInScope('canonical', '' ,false ,8);?>
@@ -44,7 +44,8 @@ $_smarty_tpl->_assignInScope('wrapper', 'index.tpl' ,false ,8);?>
 
         <?php if ($_smarty_tpl->tpl_vars['new_products']->value) {?>
         <section class="catalog-slider-section">
-            <h2 class="catalog-slider-section__title"><a href="/new">Новинки</a></h2>
+            <h2 class="catalog-slider-section__title"><a href="<?php echo $_smarty_tpl->tpl_vars['config']->value->root_url;?>
+/new">Новинки</a></h2>
             <div class="catalog-slider">
                 <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['new_products']->value, 'product');
@@ -65,7 +66,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
         <?php if ($_smarty_tpl->tpl_vars['featured_products']->value) {?>
         <section class="catalog-slider-section">
-            <h2 class="catalog-slider-section__title"><a href="/featured">Популярное</a></h2>
+            <h2 class="catalog-slider-section__title"><a href="<?php echo $_smarty_tpl->tpl_vars['config']->value->root_url;?>
+/featured">Популярное</a></h2>
             <div class="catalog-slider">
                 <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['featured_products']->value, 'product');
@@ -86,7 +88,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
         <?php if ($_smarty_tpl->tpl_vars['posts']->value) {?>
         <section class="main-news-section">
-            <h2><a href="/blog">Новости</a></h2>
+            <h2><a href="<?php echo $_smarty_tpl->tpl_vars['config']->value->root_url;?>
+/blog">Новости</a></h2>
             <div class="main-news-section__list row">
                 <?php $_smarty_tpl->_subTemplateRender("file:partials/blog_posts.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -96,7 +99,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
         <?php if ($_smarty_tpl->tpl_vars['discounted_products']->value) {?>
         <section class="catalog-slider-section">
-            <h2 class="catalog-slider-section__title"><a href="/actions">Акции</a></h2>
+            <h2 class="catalog-slider-section__title"><a href="<?php echo $_smarty_tpl->tpl_vars['config']->value->root_url;?>
+/actions">Акции</a></h2>
             <div class="catalog-slider">
                 <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['discounted_products']->value, 'product');

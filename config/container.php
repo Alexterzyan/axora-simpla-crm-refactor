@@ -14,6 +14,8 @@ use Psr\Container\ContainerInterface;
 use Rakit\Validation\Validator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
+use \App\Repositories\IBannerDBRepository;
+use \App\Eloquent\Queries\EloquentBannerQueries;
 use function DI\create;
 
 return [
@@ -74,4 +76,8 @@ return [
 
     IUserDBRepository::class => create(EloquentUserQueries::class),
     IAuthProvider::class => create(EloquentAuthProviderQueries::class),
+    IBannerDBRepository::class => create(EloquentBannerQueries::class),
+    \App\Repositories\IProductDBRepository::class => create(\App\Eloquent\Queries\EloquentProductQueries::class),
+    \App\Repositories\IBlogDBRepository::class => create(\App\Eloquent\Queries\EloquentBlogQueries::class),
+
 ];

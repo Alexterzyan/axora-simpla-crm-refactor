@@ -6,18 +6,20 @@ use App\Controllers\BlogController;
 use App\Controllers\MainController;
 use App\Controllers\UserController;
 use FastRoute\RouteCollector;
+use App\Controllers\ProductController;
 use function FastRoute\simpleDispatcher;
 
 return $dispatcher = simpleDispatcher(function (RouteCollector $r) {
 
     $r->get('/', [MainController::class, 'index']);
     $r->get('/blog', [BlogController::class, 'index']);
+    $r->get('/product/show/{name}', [ProductController::class, 'show']);
 
     $r->addGroup('/user', function (RouteCollector $r) {
         $r->get('', [UserController::class, 'index']);
         $r->get('/edit', [UserController::class, 'edit']);
         $r->post('/update', [UserController::class, 'update']);
-        $r->post('/logout', [AuthController::class, 'logout']);
+        $r->get('/logout', [AuthController::class, 'logout']);
     });
 
     $r->addGroup('/ajax', function (RouteCollector $r) {

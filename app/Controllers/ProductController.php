@@ -2,8 +2,25 @@
 
 namespace App\Controllers;
 
+use App\Api\Request;
+use App\Design;
+use Psr\Container\ContainerInterface;
+
 class ProductController extends Controller
 {
+    private $container;
+    private $design;
+
+    public function __construct(ContainerInterface $container, Design $design)
+    {
+        $this->container = $container;
+        $this->design = $design;
+    }
+
+    public function show(Request $request){
+
+    }
+
     public function fetch()
     {
         $product_url = $this->request->get('product_url', 'string');

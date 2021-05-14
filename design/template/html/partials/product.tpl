@@ -4,7 +4,7 @@
             {include file="partials/stickers.tpl"}
 
             <div class="item__control">
-                <button type="button" data-product-id="{$product->id}" class="favorite-btn js-add-favorites js-favorites-{$product->id} {if $favorites &&  in_array($product->id, $favorites)}is-active{/if} "><i class="fal fa-heart"></i></button>
+                <button type="button" data-product-id="{$product['id']}" class="favorite-btn js-add-favorites js-favorites-{$product['id']} {if $favorites &&  in_array($product['id'], $favorites)}is-active{/if} "><i class="fal fa-heart"></i></button>
 
                 {* если находимся на странице сравнения *}
                 {if $is_compares}
@@ -15,11 +15,11 @@
             </div>
         </div>
 
-        <a href="products/{$product->url}" class="item__image-field">
-            {if $product->image}
-                <img src="{$product->image->filename|resize:242:230}" class="item__image" alt="{$product->name|escape}">
+        <a href="products/{$product['url']}" class="item__image-field">
+            {if $product['image']}
+                <img src="{$product->image->filename|resize:242:230}" class="item__image" alt="{$product['name']}">
             {else}
-                <img src="/files/uploads/no-image.png" class="item__image" alt="{$product->name|escape}">
+                <img src="/files/uploads/no-image.png" class="item__image" alt="{$product['name']}">
             {/if}
         </a>
 

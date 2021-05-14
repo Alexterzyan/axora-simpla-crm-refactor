@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-05-12 19:26:10
+/* Smarty version 3.1.39, created on 2021-05-13 15:47:55
   from '/var/www/example.com/design/template/html/partials/header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_609c2bd221caf8_40046703',
+  'unifunc' => 'content_609d4a2b7b48a6_41993043',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '53aad74f29a1bd10e52c37ecf28c879123016e42' => 
     array (
       0 => '/var/www/example.com/design/template/html/partials/header.tpl',
-      1 => 1620665377,
+      1 => 1620920874,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:cart_informer.tpl' => 1,
   ),
 ),false)) {
-function content_609c2bd221caf8_40046703 (Smarty_Internal_Template $_smarty_tpl) {
+function content_609d4a2b7b48a6_41993043 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!doctype html>
 <html lang="ru">
 <head>
@@ -206,7 +206,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 </a>
                                     </div>
                                     <div class="user-field__item">
-                                        <a onclick="document.getElementById('logout-form').submit();" href="#" class="user-field__link link" id="logout">выйти</a>
+                                        <a onclick="document.getElementById('logout-form').submit();" href="<?php echo $_smarty_tpl->tpl_vars['config']->value->root_url;?>
+/user/logout" class="user-field__link link" id="logout">выйти</a>
                                         <form  style="display: none" id="logout-form" action="<?php echo route('user/logout');?>
 " method="post">
                                             <button type="submit">logout</button>
